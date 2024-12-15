@@ -1,3 +1,7 @@
-FROM openjdk:11-jre-slim
-COPY dhivakar.txt app.jar
-ENTRYPOINT ["java", "-jar","/app.jar", "--spring.profiles.active=docker"]
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY /target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar","/app/app.jar", "--spring.profiles.active=docker"]
